@@ -2,15 +2,39 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>za.co.nedj.group_acronym</groupId>
-    <artifactId>group_acronym-service-name_of_service</artifactId>
+    <groupId>za.co.nedj.nedj</groupId>
+    <artifactId>nedj-service-catdogapi</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <description>group_acronym-service-name_of_service</description>
+    <description>nedj-service-catdogapi</description>
 
     <parent>
         <groupId>za.co.nedj</groupId>
         <artifactId>nedj-service-starter</artifactId>
-        <version>1.0.6-RELEASE</version>
+        <version>1.0.26-RELEASE</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+            <version>10.11</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-gson</artifactId>
+            <version>10.11</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-slf4j</artifactId>
+            <version>10.11</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.ibm.db2/jcc -->
+        <dependency>
+            <groupId>com.ibm.db2</groupId>
+            <artifactId>jcc</artifactId>
+            <version>11.5.8.0</version>
+        </dependency>
+    </dependencies>
 </project>
