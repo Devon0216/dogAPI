@@ -9,13 +9,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "User")
+@Table(name = "USER")
 @Entity
 public class User {
     @Id
     @Generated
     @Column(name = "USER_ID")
-    private int id;
+    private long id;
     @Column(name = "NAME")
     private String name;
     @Column(name = "FAVOURITE_DOG_BREED")

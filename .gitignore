@@ -33,3 +33,5 @@ patches/
 
 # Yeoman NedJ Generator
 .yo-rc.json
+
+src/main/java/za/co/nedj/app/nedj/catdogapi/config/ApiConfig.java

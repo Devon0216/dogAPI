@@ -17,7 +17,6 @@ public class DataService {
     private EntityManager entityManager;
 
     private static final String DOG_GETALL_QUERY = "SELECT p FROM Dog p";
-
     private static final String USER_GETALL_QUERY = "SELECT p FROM Dog p";
 
     public Optional<Dog> getDog(String dogName) {
@@ -33,6 +32,17 @@ public class DataService {
 
     public Dog addDog(Dog dog) {
         entityManager.persist(dog);
+        return dog;
+    }
+
+    public Dog updateDog(Dog dog) {
+        entityManager.merge(dog);
+        return dog;
+    }
+
+    public Dog deleteDog(Long dogId) {
+        Dog dog = entityManager.find(Dog.class, dogId);
+        entityManager.remove(dog);
         return dog;
     }
 
@@ -55,4 +65,14 @@ public class DataService {
         return user;
     }
 
+    public User updateUser(User user) {
+        entityManager.merge(user);
+        return user;
+    }
+
+    public User deleteUser(Long userId) {
+        User user = entityManager.find(User.class, userId);
+        entityManager.remove(user);
+        return user;
+    }
 }

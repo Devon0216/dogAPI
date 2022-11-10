@@ -7,16 +7,13 @@ import za.co.nedj.app.nedj.catdogapi.service.DataService;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Optional;
 
 @Path("/")
-@Api(value = "catdog API")
+@Api(value = "user API")
 @Produces(MediaType.APPLICATION_JSON)
 @Stateless
 public class UserRest {
@@ -25,7 +22,7 @@ public class UserRest {
 
     @GET
     @Path("/{userId}/user")
-    public Response getUser(@PathParam("dogName") Long userId) {
+    public Response getUser(@PathParam("userId") Long userId) {
         Optional<User> response = dataService.getUser(userId);
         return response
                 .map(x -> Response.status(Response.Status.OK).entity(x).build())
@@ -36,5 +33,23 @@ public class UserRest {
     @Path("/user")
     public Response getAllUsers() {
         return Response.status(Response.Status.OK).entity(dataService.getAllUsers()).build();
+    }
+
+    @POST
+    @Path("/user")
+    public Response addUser(User user) {
+        return Response.status(Response.Status.OK).entity(dataService.addUser(user)).build();
+    }
+
+    @PUT
+    @Path("/user")
+    public Response updateUser(User user) {
+        return Response.status(Response.Status.OK).entity(dataService.updateUser(user)).build();
+    }
+
+    @DELETE
+    @Path("/{userId}/user")
+    public Response deleteUser(@PathParam("userId") Long userId) {
+        return Response.status(Response.Status.OK).entity(dataService.deleteUser(userId)).build();
     }
 }

@@ -8,17 +8,32 @@
                     javax.sql.ConnectionPoolDataSource="org.postgresql.ds.PGConnectionPoolDataSource"
                     libraryRef="postgresql-library"/>-->
 
-    <library id="DB2Lib">
+<!--    <library id="DB2Lib">
         <fileset dir="C:\Users\bbdnet2758\.m2\repository\com\ibm\db2\jcc\db2jcc4\11.1" includes="db2jcc4-11.1.jar"/>
-    </library>
+    </library>-->
 
     <!-- Declare the IBM Application Center database. -->
-    <dataSource id="db2" jndiName="jdbc/nfpe" transactional="false">
+<!--    <dataSource id="db2" jndiName="jdbc/nfpe" transactional="false">
         <jdbcDriver libraryRef="DB2Lib"/>
         <properties.db2.jcc databaseName="testdb"  currentSchema="DOGS"
                             serverName="localhost" portNumber="50000"
                             user="db2inst1" password="db2devon"/>
+    </dataSource>-->
+
+    <dataSource id="db2" jndiName="jdbc/nfpe" connectionSharing="MatchCurrentState"
+                isolationLevel="TRANSACTION_READ_COMMITTED" statementCacheSize="20">
+        <connectionManager maxPoolSize="20" minPoolSize="5"
+                           connectionTimeout="10s" agedTimeout="30m"/>
+        <jdbcDriver libraryRef="work"/>
+        <properties.db2.jcc driverType="4" serverName="localhost"
+                            portNumber="50000" databaseName="testdb" currentSchema="DOGS"
+                            user="db2inst1" password="db2devon"/>
     </dataSource>
+
+    <library id="work">
+        <fileset  dir="C:\Users\bbdnet2758\.m2\repository\com\ibm\db2\jcc\db2jcc4\11.1"
+                 includes="db2jcc4-11.1.jar"/>
+    </library>
 
 
 </server>
