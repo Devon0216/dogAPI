@@ -1,6 +1,7 @@
 package za.co.nedj.app.nedj.catdogapi.service;
 
 import za.co.nedj.app.nedj.catdogapi.model.Dog;
+import za.co.nedj.app.nedj.catdogapi.model.DogDTO;
 import za.co.nedj.app.nedj.catdogapi.model.User;
 
 import javax.ejb.Stateless;
@@ -19,32 +20,32 @@ public class DataService {
     private static final String DOG_GETALL_QUERY = "SELECT p FROM Dog p";
     private static final String USER_GETALL_QUERY = "SELECT p FROM Dog p";
 
-    public Optional<Dog> getDog(String dogName) {
-        Dog getDog = entityManager.find(Dog.class, dogName) ;
-        Optional<Dog> getOptionalDog = Optional.of(getDog);
-        return getOptionalDog;
-    }
+//    public Optional<Dog> getDog(String dogName) {
+//        Dog getDog = entityManager.find(Dog.class, dogName) ;
+//        Optional<Dog> getOptionalDog = Optional.of(getDog);
+//        return getOptionalDog;
+//    }
 
     public List<Dog> getAllDogs(){
         TypedQuery<Dog> getAllDogsTypeQuery = entityManager.createQuery(DOG_GETALL_QUERY, Dog.class);
         return getAllDogsTypeQuery.getResultList();
     }
 
-    public Dog addDog(Dog dog) {
-        entityManager.persist(dog);
-        return dog;
+    public DogDTO addDog(DogDTO dogDTO) {
+        entityManager.persist(dogDTO);
+        return dogDTO;
     }
-
-    public Dog updateDog(Dog dog) {
-        entityManager.merge(dog);
-        return dog;
-    }
-
-    public Dog deleteDog(Long dogId) {
-        Dog dog = entityManager.find(Dog.class, dogId);
-        entityManager.remove(dog);
-        return dog;
-    }
+//
+//    public Dog updateDog(Dog dog) {
+//        entityManager.merge(dog);
+//        return dog;
+//    }
+//
+//    public Dog deleteDog(Long dogId) {
+//        Dog dog = entityManager.find(Dog.class, dogId);
+//        entityManager.remove(dog);
+//        return dog;
+//    }
 
     /** user
      *

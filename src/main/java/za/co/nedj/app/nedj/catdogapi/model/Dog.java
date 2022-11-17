@@ -3,6 +3,7 @@ package za.co.nedj.app.nedj.catdogapi.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -15,7 +16,7 @@ public class Dog {
     @Id
     @Generated
     @Column(name = "DOG_ID")
-    private long id;
+    private Long id;
     @Column(name = "NAME")
     private String name;
     @Column(name = "LIFE_SPAN")
@@ -23,6 +24,7 @@ public class Dog {
     @Column(name = "ALT_NAME")
     private String alternativeName ;
 
+
     @ManyToMany(mappedBy = "dogs")
-    private Set<User> users;
+    private List<User> users;
 }

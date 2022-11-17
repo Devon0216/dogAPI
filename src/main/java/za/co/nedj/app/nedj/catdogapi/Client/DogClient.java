@@ -11,8 +11,10 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 public interface DogClient {
-    @RequestLine("GET /{dogName}")
-    Dog findByBreedName(@Param("dogName")  String dogName, @HeaderMap Map<String,String> mapHeader);
+//    @RequestLine("GET /{dogBreedName}")
+    @RequestLine("GET /breeds/search/?q={dogBreedName}")
+    @Headers("Content-Type: application/json")
+    List<Dog> findByBreedName(@Param("dogBreedName")  String dogBreedName, @HeaderMap Map<String,String> mapHeader);
 
     @RequestLine("GET /breeds")
     List<Dog> findAllBreeds(@HeaderMap Map<String,String> mapHeader);
